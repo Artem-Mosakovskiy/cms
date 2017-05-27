@@ -68,7 +68,11 @@
         </div>
 
         <div class="col-md-10">
-            @yield('admin.categories')
+            <div class="row">
+                <div class="col-md-10">
+                    @yield('admin.content')
+                </div>
+            </div>
         </div>
 
     </div>

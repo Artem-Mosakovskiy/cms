@@ -20,3 +20,11 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('admin/categories', 'CategoriesController@index');
+Route::get('admin/addCategory', 'CategoriesController@add');
+Route::get('admin/editCategory/{id}', 'CategoriesController@edit');
+Route::get('admin/deleteCategory/{id}', 'CategoriesController@delete');
+
+Route::post('admin/addCategory', 'CategoriesController@save');
+Route::post('admin/editCategory', 'CategoriesController@update');
+
+
