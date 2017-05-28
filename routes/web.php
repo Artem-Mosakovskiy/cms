@@ -28,6 +28,7 @@ Route::post('admin/addCategory', 'CategoriesController@save');
 Route::post('admin/editCategory', 'CategoriesController@update');
 
 Route::get('admin/posts', 'PostsController@index');
+Route::get('admin/search', 'PostsController@search');
 Route::get('admin/addPost', 'PostsController@add');
 Route::get('admin/editPost/{id}', 'PostsController@edit');
 Route::get('admin/deletePost/{id}', 'PostsController@delete');

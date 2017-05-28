@@ -24,12 +24,14 @@
             <div class="col-md-5">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="input-group form">
-                            <input type="text" name="search" class="form-control" placeholder="Найти статью...">
-                            <span class="input-group-btn">
-	                         <button class="btn btn-primary" type="button">Поиск</button>
-	                       </span>
-                        </div>
+                        <form method="get" action="/admin/search/">
+                            <div class="input-group form">
+                                <input type="text" name="string" class="form-control" placeholder="Найти статью...">
+                                <span class="input-group-btn">
+                                 <button class="btn btn-primary" type="submit">Поиск</button>
+                               </span>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

@@ -21,4 +21,8 @@ class Posts extends AppModel
     public function comments(){
         return $this->hasMany('App\Comments', 'post_id', 'id');
     }
+
+    public function  scopeLike($query, $field, $value){
+        return $query->where($field, 'LIKE', "%$value%");
+    }
 }

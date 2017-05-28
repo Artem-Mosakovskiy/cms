@@ -6,6 +6,7 @@ use App\Categories;
 use App\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
 
 class PostsController extends Controller
 {
@@ -13,7 +14,8 @@ class PostsController extends Controller
     {
         $posts  = Posts::all();
         return view('admin.posts.posts', [
-            'posts' => $posts
+            'posts' => $posts,
+            'title' => 'Статьи'
         ]);
     }
 
@@ -62,5 +64,14 @@ class PostsController extends Controller
     public function delete($id){
         Posts::findOrFail($id)->delete();
         return redirect('/admin/posts');
+    }
+
+    public function search(){
+        $string = Input::get('string');
+        $posts = Posts::like('title', $string)->get();
+        return view('admin.posts.posts', [
+            'posts' => $posts,
+            'title' => 'Поиск'
+        ]);
     }
 }
