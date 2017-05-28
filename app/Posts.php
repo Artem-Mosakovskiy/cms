@@ -19,6 +19,6 @@ class Posts extends AppModel
     ];
 
     public function comments(){
-        return $this->hasMany('App\Comments');
+        return $this->hasMany('App\Comments', 'post_id', 'id');
     }
 }

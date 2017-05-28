@@ -35,4 +35,5 @@ Route::get('admin/deletePost/{id}', 'PostsController@delete');
 Route::post('admin/addPost', 'PostsController@save');
 Route::post('admin/editPost', 'PostsController@update');
 
-
+Route::get('admin/comments', 'CommentsController@index');
+Route::get('admin/deleteComments/{id}', 'CommentsController@delete');

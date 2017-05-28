@@ -25,7 +25,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="input-group form">
-                            <input type="text" class="form-control" placeholder="Поиск...">
+                            <input type="text" name="search" class="form-control" placeholder="Найти статью...">
                             <span class="input-group-btn">
 	                         <button class="btn btn-primary" type="button">Поиск</button>
 	                       </span>
@@ -67,6 +67,10 @@
                         <a href="/admin/posts">
                             <i class="glyphicon glyphicon-edit"></i>
                             Статьи
+                        </a>
+                        <a href="/admin/comments">
+                            <i class="glyphicon glyphicon-comment"></i>
+                            Комментарии
                         </a>
                     </li>
                 </ul>
