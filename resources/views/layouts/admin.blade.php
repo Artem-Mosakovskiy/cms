@@ -7,7 +7,9 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="/css/styles.css" rel="stylesheet">
-
+    <link href="/css/jquery-ui.css" rel="stylesheet">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-ui.js"></script>
 </head>
 <body>
 <div class="header">
@@ -62,6 +64,10 @@
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Категории
                         </a>
+                        <a href="/admin/posts">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Статьи
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -85,15 +91,12 @@
 
 <footer>
     <div class="container">
-
         <div class="copy text-center">
             Copyright 2017 <a href='#'>CMS Blog</a>
         </div>
-
     </div>
 </footer>
 
-<script src="/js/jquery.js"></script>
 <script src="/js/custom.js"></script>
 </body>
 </html>

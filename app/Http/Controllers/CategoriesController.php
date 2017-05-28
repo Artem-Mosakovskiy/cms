@@ -16,13 +16,13 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories  = Categories::all();
-        return view('admin.categories', [
+        return view('admin.categories.categories', [
             'categories' => $categories
         ]);
     }
 
     public function add(){
-        return view('admin.addCategory');
+        return view('admin.categories.addCategory');
     }
 
     public function save(Request $request){
@@ -41,7 +41,7 @@ class CategoriesController extends Controller
 
     public function edit(Request $request){
         $category = Categories::findOrFail($request->id);
-        return view('admin.editCategory', [
+        return view('admin.categories.editCategory', [
             'category' => $category
         ]);
     }
