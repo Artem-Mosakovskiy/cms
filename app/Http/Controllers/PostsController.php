@@ -4,12 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Categories;
 use App\Posts;
+use Illuminate\Support\Facades\File;
+use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 
 class PostsController extends Controller
 {
+    public static $content = 'test';
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $posts  = Posts::all();
@@ -44,6 +53,7 @@ class PostsController extends Controller
     public function edit(Request $request){
         $post = Posts::findOrFail($request->id);
         $categories = Categories::pluck('category_name', 'id');
+
         return view('admin.posts.editPost', [
             'post' => $post,
             'categories' => $categories->toArray()
@@ -73,5 +83,40 @@ class PostsController extends Controller
             'posts' => $posts,
             'title' => 'Поиск'
         ]);
+    }
+
+    public function ajaxUploadImg(Request $request)
+    {
+        //dd($request->all());
+
+        if($request->isMethod('post')){
+            if ($request->hasFile('user_photo')) {
+                $file = $request->file('user_photo');
+
+                $fileName = rand(1000, 100000) . $file->getClientOriginalName();
+
+                $file->move('uploads/images/', $fileName);
+
+                /*Image::make(sprintf($logoDirectoryPath . '%s', $image_name))->crop((int)$request->width,
+                    (int)$request->height, (int)$request->x, (int)$request->y)->/*resize(200, 200)->save();*/
+
+                echo '/uploads/images/' . $fileName;
+            }
+        }
+        exit;
+    }
+
+    public function ajaxDeleteImages(Request $request){
+
+        foreach ($request->get('photos') as $src){
+            $src = public_path() . $src;
+
+            if(File::isFile($src)){
+                File::delete($src);
+            }
+
+        }
+        echo 'success';
+        exit;
     }
 }

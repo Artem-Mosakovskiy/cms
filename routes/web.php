@@ -33,6 +33,9 @@ Route::get('admin/addPost', 'PostsController@add');
 Route::get('admin/editPost/{id}', 'PostsController@edit');
 Route::get('admin/deletePost/{id}', 'PostsController@delete');
 
+Route::post('admin/ajaxUploadImg', 'PostsController@ajaxUploadImg');
+Route::get('admin/ajaxDeleteImages', 'PostsController@ajaxDeleteImages');
+
 Route::post('admin/addPost', 'PostsController@save');
 Route::post('admin/editPost', 'PostsController@update');
 

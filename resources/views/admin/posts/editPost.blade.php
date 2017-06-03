@@ -9,7 +9,7 @@
 
             </div>
             <div class="panel-body">
-                <form class="form-horizontal" role="form" action="/admin/editPost" method="post">
+                <form class="form-horizontal" name="post" role="form" action="/admin/editPost" method="post">
                     {{ csrf_field() }}
                     <div class="form-group">
                         @foreach($errors->all() as $error)
@@ -49,7 +49,11 @@
                     <div class="form-group">
                         <label for="catName" class="col-sm-2 control-label">Контент</label>
                         <div class="col-sm-10">
-                            <input type="text" name="content" value="{{ Input::old('content', $post->content) }}" class="form-control" placeholder="контент">
+                            <div class="editor"></div>
+
+                            <div style="display: none;" id="content"><?php echo $post->content ?></div>
+                            <textarea style="display: none;" name="content"></textarea>
+                            <input style="display: none;" type="file" name="img">
                         </div>
                     </div>
 
@@ -58,8 +62,14 @@
                             <button type="submit" class="btn btn-primary">Сохранить</button>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>
+    <script src="/js/tinymce.min.js"></script>
+    <script>
+        var token = '{{ csrf_token() }}';
+    </script>
+    <script src="/js/edit_add_post.js"></script>
 
 @endsection
