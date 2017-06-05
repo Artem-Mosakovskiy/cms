@@ -87,16 +87,6 @@ $(function () {
     });
 
     $('input[name=img]').on('change', function () {
-        /*if (this.files && this.files[0]) {
-
-         var FR= new FileReader();
-
-         FR.addEventListener("load", function(e) {
-         tinymce.activeEditor.execCommand('mceInsertContent', false, '<img style="width: 300px; height: 200px" src="' + e.target.result + '">');
-         });
-
-         FR.readAsDataURL( this.files[0] );
-         }*/
         sendImg($(this));
     });
 

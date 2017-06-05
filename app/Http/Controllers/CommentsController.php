@@ -3,23 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Comments;
-use App\Posts;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
-    public function index()
-    {
-        $comments  = Comments::with('post', 'user')->get();
-
-        return view('admin.comments.comments', [
-            'comments' => $comments
+    public function ajaxAddComment(Request $request){
+        $comment = new Comments;
+        $comment->post_id = $request->id;
+        $comment->user_id = Auth::id();
+        $comment->comment = $request->comment;
+        $comment->save();
+        return response()->json([
+            'status' => 'success',
+            'comment' => $comment,
+            'name' => Auth::user()->name
         ]);
-    }
-
-    public function delete($id){
-        Comments::findOrFail($id)->delete();
-        return redirect('/admin/comments');
     }
 }

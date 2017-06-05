@@ -15,11 +15,15 @@ class Posts extends AppModel
         'description' => 'required',
         'keywords' => 'required',
         'user_id' => 'required'
-//        'content' => 'required'
+//       'content' => 'required'
     ];
 
     public function comments(){
-        return $this->hasMany('App\Comments', 'post_id', 'id');
+        return $this->hasMany('App\Comments', 'post_id', 'id')->orderBy('created_at', 'desc');
+    }
+
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
     public function  scopeLike($query, $field, $value){
