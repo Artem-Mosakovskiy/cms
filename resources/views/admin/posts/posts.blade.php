@@ -7,6 +7,11 @@
             <div class="panel-title">{{ $title }}</div>
 
             <div class="panel-options">
+                @if(Input::get('moderate') and \App\User::hasRole(1))
+                    <a href="?" class="btn btn-primary">Активные</a>
+                    @else
+                        <a href="?moderate=true" class="btn btn-primary">Модерация</a>
+                @endif
                 <a href="/admin/addPost" class="btn btn-success">Добавить статью</a>
             </div>
         </div>
@@ -30,8 +35,18 @@
                                 <td>{{ $post->user_id }}</td>
                                 <td>{{ $post->category_id }}</td>
                                 <td>
-                                    <a href="/admin/editPost/{{ $post->id }}" class="btn btn-warning btn-xs">Редактировать</a>
-                                    <a href="/admin/deletePost/{{ $post->id }}" class="btn btn-danger btn-xs">Удалить</a>
+                                    @if(Input::get('moderate') and \App\User::hasRole(1))
+                                        <a href="/admin/preview/{{ $post->id }}" class="btn btn-warning btn-xs">Просмотреть</a>
+                                        <a href="/admin/activatePost/{{ $post->id }}" class="btn btn-success btn-xs">Активировать</a>
+                                        <a href="/admin/deletePost/{{ $post->id }}" class="btn btn-danger btn-xs">Удалить</a>
+                                    @endif
+
+                                    @if(!Input::get('moderate'))
+                                        <a href="/admin/editPost/{{ $post->id }}" class="btn btn-warning btn-xs">Редактировать</a>
+                                        @if(\App\User::hasRole(1))
+                                            <a href="/admin/deletePost/{{ $post->id }}" class="btn btn-danger btn-xs">Удалить</a>
+                                        @endif
+                                        @endif
                                 </td>
                             </tr>
                         @endforeach

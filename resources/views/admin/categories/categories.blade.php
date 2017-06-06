@@ -17,6 +17,7 @@
                     <th>#</th>
                     <th>Название</th>
                     <th>Описание</th>
+                    <th>deleted</th>
                     <th>Действия</th>
                 </tr>
                 </thead>
@@ -26,9 +27,16 @@
                             <td>{{ $category->id }}</td>
                             <td>{{ $category->category_name }}</td>
                             <td>{{ $category->category_description }}</td>
+                            <td>{{ $category->deleted }}</td>
                             <td>
                                 <a href="/admin/editCategory/{{ $category->id }}" class="btn btn-warning btn-xs">Редактировать</a>
-                                <a href="/admin/deleteCategory/{{ $category->id }}" class="btn btn-danger btn-xs">Удалить</a>
+                                @if(\App\User::hasRole(1))
+                                    @if($category->deleted == 1)
+                                        <a href="/admin/deleteCategory/{{ $category->id }}" class="btn btn-danger btn-xs">Активировать</a>
+                                        @else
+                                        <a href="/admin/deleteCategory/{{ $category->id }}" class="btn btn-danger btn-xs">Удалить</a>
+                                    @endif
+                                @endif
                             </td>
                         </tr>
                     @endforeach

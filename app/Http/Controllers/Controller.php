@@ -15,7 +15,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        $categories = Categories::pluck('category_name', 'id');
+        $categories = Categories::where('deleted' , 0)->pluck('category_name', 'id');
         View::share('categories', $categories);
     }
 

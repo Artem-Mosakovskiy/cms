@@ -66,6 +66,9 @@
         </div>
     </div>
     <script src="/js/tinymce.min.js"></script>
-    <script> var token = '{{ csrf_token() }}';</script>
+    <script>
+        var token = '{{ csrf_token() }}';
+        var disabled = false;
+    </script>
     <script src="/js/edit_add_post.js"></script>
 @endsection

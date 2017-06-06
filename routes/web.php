@@ -17,8 +17,11 @@ Route::get('/', 'PostsController@showPosts');
 Route::get('/home', 'PostsController@showPosts');
 
 Route::get('/posts/view/{id}', 'PostsController@view');
+Route::get('/category/{id}', 'PostsController@category');
 
+Route::get('/search', 'PostsController@search');
 
+/* categories CRUD */
 Route::get('admin/categories', 'Admin\CategoriesController@index');
 Route::get('admin/addCategory', 'Admin\CategoriesController@add');
 Route::get('admin/editCategory/{id}', 'Admin\CategoriesController@edit');
@@ -27,18 +30,25 @@ Route::get('admin/deleteCategory/{id}', 'Admin\CategoriesController@delete');
 Route::post('admin/addCategory', 'Admin\CategoriesController@save');
 Route::post('admin/editCategory', 'Admin\CategoriesController@update');
 
+/* posts CRUD */
 Route::get('admin/posts', 'Admin\PostsController@index');
 Route::get('admin/search', 'Admin\PostsController@search');
 Route::get('admin/addPost', 'Admin\PostsController@add');
 Route::get('admin/editPost/{id}', 'Admin\PostsController@edit');
 Route::get('admin/deletePost/{id}', 'Admin\PostsController@delete');
 
-Route::post('admin/ajaxUploadImg', 'Admin\PostsController@ajaxUploadImg');
-Route::get('admin/ajaxDeleteImages', 'Admin\PostsController@ajaxDeleteImages');
-
 Route::post('admin/addPost', 'Admin\PostsController@save');
 Route::post('admin/editPost', 'Admin\PostsController@update');
 
+/* for moderating posts */
+Route::get('/admin/preview/{id}', 'Admin\PostsController@preview');
+Route::get('/admin/activatePost/{id}', 'Admin\PostsController@activatePost');
+
+/* add or delete message to tinyMce editor*/
+Route::post('admin/ajaxUploadImg', 'Admin\PostsController@ajaxUploadImg');
+Route::get('admin/ajaxDeleteImages', 'Admin\PostsController@ajaxDeleteImages');
+
+/* commnts CRUD */
 Route::get('admin/comments', 'Admin\CommentsController@index');
-Route::get('admin/deleteComments/{id}', 'Admin\CommentsController@delete');
+Route::get('admin/deleteComment/{id}', 'Admin\CommentsController@delete');
 Route::post('ajaxAddComment', 'CommentsController@ajaxAddComment');

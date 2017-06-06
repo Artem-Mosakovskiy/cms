@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Categories;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,7 +17,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories  = Categories::all();
+        $categories  = Categories::orderBy('deleted')->get();
         return view('admin.categories.categories', [
             'categories' => $categories
         ]);
@@ -59,7 +60,19 @@ class CategoriesController extends Controller
     }
 
     public function delete($id){
-        Categories::findOrFail($id)->delete();
-        return redirect('/admin/categories');
+        if(User::hasRole(1)){
+            $category = Categories::findOrFail($id);
+
+            if($category->deleted == 0){
+                $category->deleted = 1;
+            }
+            else {
+                $category->deleted = 0;
+            }
+
+            $category->save();
+            return redirect('/admin/categories');
+        }
+        return Redirect::back();
     }
 }

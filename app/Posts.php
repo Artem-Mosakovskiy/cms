@@ -7,7 +7,7 @@ use App\Comments;
 
 class Posts extends AppModel
 {
-    protected $fillable = ['category_id', 'title', 'description', 'keywords', 'content', 'user_id'];
+    protected $fillable = ['category_id', 'title', 'description', 'keywords', 'content', 'user_id', 'active'];
 
     protected $rules = [
         'category_id' => 'required|integer',

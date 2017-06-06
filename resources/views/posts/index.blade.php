@@ -4,7 +4,12 @@
 
     <h1 class="page-header">
         Главная
-        <small>статьи</small>
+        @if(isset($title))
+            <small>{{ $title }}</small>
+            @else
+                <small>статьи</small>
+        @endif
+
     </h1>
 
     <!-- Blog Post -->

@@ -7,6 +7,9 @@ tinymce.init({
     setup: function(editor) {
         editor.on('init', function() {
             tinymce.activeEditor.setContent($('#content').html());
+            if(disabled){
+                tinyMCE.activeEditor.getBody().setAttribute('contenteditable', false);
+            }
         });
 
         editor.addButton('mybutton', {

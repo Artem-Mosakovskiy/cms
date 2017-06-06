@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Categories;
+use App\Comments;
 use App\Http\Controllers\Controller;
 use App\Posts;
+use App\User;
 use Illuminate\Support\Facades\File;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
+use PhpParser\Comment;
 
 class PostsController extends Controller
 {
@@ -22,7 +25,12 @@ class PostsController extends Controller
 
     public function index()
     {
-        $posts  = Posts::all();
+        //dd(Input::get('moderate'));
+        $active = 1;
+        if(Input::get('moderate') == true){
+            $active = 0;
+        }
+        $posts  = Posts::where('active', $active)->get();
         return view('admin.posts.posts', [
             'posts' => $posts,
             'title' => 'Статьи'
@@ -30,7 +38,7 @@ class PostsController extends Controller
     }
 
     public function add(){
-        $categories = Categories::pluck('category_name', 'id');
+        $categories = Categories::where('deleted' , 0)->pluck('category_name', 'id');
 
         return view('admin.posts.addPost', [
             'categories' => $categories->toArray()
@@ -42,7 +50,13 @@ class PostsController extends Controller
         $post = new Posts;
 
         if($post->validate($request->all())){
-            $post->create($request->all());
+
+            $post = $post->create($request->all());
+            if(User::hasRole(1)){
+                $post->active = 1;
+                $post->save();
+            }
+
             return redirect('/admin/posts');
         }
 
@@ -53,7 +67,8 @@ class PostsController extends Controller
 
     public function edit(Request $request){
         $post = Posts::findOrFail($request->id);
-        $categories = Categories::pluck('category_name', 'id');
+
+        $categories = Categories::where('deleted' , 0)->pluck('category_name', 'id');
 
         return view('admin.posts.editPost', [
             'post' => $post,
@@ -73,8 +88,12 @@ class PostsController extends Controller
     }
 
     public function delete($id){
-        Posts::findOrFail($id)->delete();
-        return redirect('/admin/posts');
+        if(User::hasRole(1)){
+            Posts::findOrFail($id)->delete();
+            Comments::where('post_id', $id)->delete();
+            return redirect('/admin/posts');
+        }
+        return Redirect::back();
     }
 
     public function search(){
@@ -116,4 +135,26 @@ class PostsController extends Controller
         echo 'success';
         exit;
     }
+
+    /* functions for moderatiing posts */
+    public function activatePost($id){
+        if(User::hasRole(1)){
+            $post = Posts::findOrFail($id);
+            $post->active = 1;
+            $post->save();
+            return redirect('/admin/posts');
+        }
+        return Redirect::back();
+    }
+
+    public function preview($id){
+        $post = Posts::findOrFail($id);
+        $categories = Categories::where('deleted' , 0)->pluck('category_name', 'id');
+
+        return view('admin.posts.preview', [
+            'post' => $post,
+            'categories' => $categories->toArray()
+        ]);
+    }
+
 }

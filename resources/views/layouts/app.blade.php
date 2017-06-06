@@ -181,23 +181,31 @@
             <div class="well">
                 <h4>Поиск по статьям</h4>
                 <div class="input-group">
-                    <input type="text" class="form-control">
+                    {{--<input type="text" class="form-control">
                     <span class="input-group-btn">
                             <button class="btn btn-default" type="button">
                                 <span class="glyphicon glyphicon-search"></span>
                         </button>
-                        </span>
+                    </span>--}}
+                    <form method="get" action="/search/">
+                        <div class="input-group form">
+                            <input type="text" name="string" class="form-control" placeholder="Поиск...">
+                            <span class="input-group-btn">
+                                 <button class="btn btn-primary" type="submit">Поиск</button>
+                            </span>
+                        </div>
+                    </form>
                 </div>
             </div>
 
             <div class="well">
-                <h4>Категории</h4>
+                <h4>Рубрики</h4>
                 <div class="row">
                     <div class="col-lg-6">
                         <ul class="list-unstyled">
                             @foreach($categories as $key => $value)
                                 <li>
-                                    <a class="btn btn-link" href="{{$key}}">{{$value}}</a>
+                                    <a class="btn btn-link" href="/category/{{$key}}">{{$value}}</a>
                                 </li>
                             @endforeach
                         </ul>
