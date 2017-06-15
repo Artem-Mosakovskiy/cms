@@ -16,7 +16,7 @@ class PostsController extends Controller
     }
 
     public function showPosts(){
-        $posts = Posts::with('user')->paginate(3);
+        $posts = Posts::with('user')->where('active', 1)->paginate(3);
         return view('posts.index', [
             'posts' => $posts,
         ]);

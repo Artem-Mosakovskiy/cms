@@ -36,6 +36,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Posts', 'user_id', 'id');
     }
 
+    public function status(){
+        return $this->belongsTo('App\UserStatuses', 'status_id', 'id');
+    }
+
     public static function hasRole($role){
         if(Auth::user()->role == $role){
             return true;

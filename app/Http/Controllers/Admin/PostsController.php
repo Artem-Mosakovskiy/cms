@@ -25,12 +25,12 @@ class PostsController extends Controller
 
     public function index()
     {
-        //dd(Input::get('moderate'));
         $active = 1;
         if(Input::get('moderate') == true){
             $active = 0;
         }
-        $posts  = Posts::where('active', $active)->get();
+        $posts  = Posts::with('user','category')->where('active', $active)->get();
+        
         return view('admin.posts.posts', [
             'posts' => $posts,
             'title' => 'Статьи'

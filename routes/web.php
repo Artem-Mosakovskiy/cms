@@ -52,3 +52,18 @@ Route::get('admin/ajaxDeleteImages', 'Admin\PostsController@ajaxDeleteImages');
 Route::get('admin/comments', 'Admin\CommentsController@index');
 Route::get('admin/deleteComment/{id}', 'Admin\CommentsController@delete');
 Route::post('ajaxAddComment', 'CommentsController@ajaxAddComment');
+
+/* users CRUD */
+Route::get('admin/users', 'Admin\UsersController@index');
+Route::get('admin/users/preview/{id}', 'Admin\UsersController@preview');
+
+Route::post('admin/users/save', 'Admin\UsersController@save');
+Route::get('admin/users/delete/{id}', 'Admin\UsersController@delete');
+Route::post('admin/users/ajax', 'Admin\UsersController@ajaxGetUsers');
+
+/* profile fucntions */
+Route::get('/users/profile', 'UserController@profile');
+Route::post('/user/password', 'UserController@updatePassword');
+Route::post('/users/update', 'UserController@update');
+Route::post('/uploadUserPhoto', 'UserController@uploadPhoto');
+

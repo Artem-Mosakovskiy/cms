@@ -7,9 +7,12 @@
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- styles -->
     <link href="/css/styles.css" rel="stylesheet">
+    <link href="/css/cropper.css" rel="stylesheet">
+    <link href="/css/main.css" rel="stylesheet">
     <link href="/css/jquery-ui.css" rel="stylesheet">
     <script src="/js/jquery.js"></script>
     <script src="/js/jquery-ui.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
 <div class="header">
@@ -40,10 +43,14 @@
                     <nav class="collapse navbar-collapse bs-navbar-collapse navbar-right" role="navigation">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }} <b class="caret"></b></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{{ $user->photo ? '/uploads/users/avatar/'.$user->photo : '/images/profile.png' }}" class="img-circle profile-img-small" alt="profileImg">
+                                    {{ Auth::user()->name }}
+                                    <b class="caret"></b>
+                                </a>
                                 <ul class="dropdown-menu animated fadeInUp">
-                                    <li><a href="profile.html">Profile</a></li>
-                                    <li><a href="login.html">Logout</a></li>
+                                    <li><a href="/users/profile">Profile</a></li>
+                                    <li><a href="#">Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -62,6 +69,10 @@
                     <!-- Main menu -->
                     <li{{-- class="current"--}}><a href="index.html"><i class="glyphicon glyphicon-home"></i> Главная</a></li>
                     <li>
+                        <a href="/admin/users">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Пользователи
+                        </a>
                         <a href="/admin/categories">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Категории
@@ -99,6 +110,7 @@
     </div>
 </footer>
 
-<script src="/js/custom.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/cropper.js"></script>
 </body>
 </html>

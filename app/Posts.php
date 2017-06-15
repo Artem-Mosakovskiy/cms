@@ -26,6 +26,10 @@ class Posts extends AppModel
         return $this->belongsTo('App\User', 'user_id', 'id');
     }
 
+    public function category(){
+        return $this->belongsTo('App\Categories', 'category_id', 'id');
+    }
+
     public function  scopeLike($query, $field, $value){
         return $query->where($field, 'LIKE', "%$value%");
     }

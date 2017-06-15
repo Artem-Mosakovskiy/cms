@@ -32,8 +32,8 @@
                             <tr>
                                 <td>{{ $post->id }}</td>
                                 <td>{{ $post->title }}</td>
-                                <td>{{ $post->user_id }}</td>
-                                <td>{{ $post->category_id }}</td>
+                                <td>{{ $post->user->name }}</td>
+                                <td>{{ $post->category->category_name }}</td>
                                 <td>
                                     @if(Input::get('moderate') and \App\User::hasRole(1))
                                         <a href="/admin/preview/{{ $post->id }}" class="btn btn-warning btn-xs">Просмотреть</a>
