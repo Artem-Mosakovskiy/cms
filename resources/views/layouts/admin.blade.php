@@ -44,7 +44,7 @@
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ $user->photo ? '/uploads/users/avatar/'.$user->photo : '/images/profile.png' }}" class="img-circle profile-img-small" alt="profileImg">
+                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->photo ? '/uploads/users/avatar/'.\Illuminate\Support\Facades\Auth::user()->photo : '/images/profile.png' }}" class="img-circle profile-img-small" alt="profileImg">
                                     {{ Auth::user()->name }}
                                     <b class="caret"></b>
                                 </a>
