@@ -69,8 +69,15 @@ Route::post('/user/password', 'UserController@updatePassword');
 Route::post('/users/update', 'UserController@update');
 Route::post('/uploadUserPhoto', 'UserController@uploadPhoto');
 
+
+/* subscribers */
 Route::post('/subscribe', 'EmailSubscriberController@subscribe');
 
+Route::get('/admin/subscribers', 'Admin\EmailSubscriberController@index');
+Route::get('/admin/deleteSubscriber/{id}', 'Admin\EmailSubscriberController@delete');
+
+Route::get('/admin/sendToSubscribers', 'Admin\EmailSubscriberController@mailIndex');
+Route::post('/admin/sendMail', 'Admin\EmailSubscriberController@sendMail');
 
 
 

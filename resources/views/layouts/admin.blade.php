@@ -68,12 +68,6 @@
                 <ul class="nav">
                     <!-- Main menu -->
                     <li><a href="/"><i class="glyphicon glyphicon-home"></i> Блог</a></li>
-                    <li class="{{ Menu::active('users') }}">
-                        <a href="/admin/users">
-                            <i class="glyphicon glyphicon-user"></i>
-                            Пользователи
-                        </a>
-                    </li>
                     <li class="{{ Menu::active('categ') }}">
                         <a href="/admin/categories">
                             <i class="glyphicon glyphicon-list-alt"></i>
@@ -92,6 +86,21 @@
                             Комментарии
                         </a>
                     </li>
+
+                    @if(User::hasRole(1))
+                        <li class="{{ Menu::active('users') }}">
+                            <a href="/admin/users">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Пользователи
+                            </a>
+                        </li>
+                        <li class="{{ Menu::active('subscribers') }}">
+                            <a href="/admin/subscribers">
+                                <i class="glyphicon glyphicon-user"></i>
+                                Подписчики
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>

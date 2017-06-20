@@ -232,6 +232,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Input' => \Illuminate\Support\Facades\Input::class,
         'Menu' => \App\Helpers\Menu::class,
+        'User' => \App\User::class
     ],
 
 ];
