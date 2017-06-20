@@ -81,4 +81,9 @@ class UserController extends Controller
             exit;
         }
     }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
+    }
 }

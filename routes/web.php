@@ -89,3 +89,5 @@ Route::post('admin/addPage', 'Admin\PagesController@save');
 Route::post('admin/editPage', 'Admin\PagesController@update');
 
 Route::get('/pages/{slug}', 'PagesController@index');
+
+Route::get('/user/logout', 'UserController@logout');

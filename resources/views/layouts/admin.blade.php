@@ -50,7 +50,7 @@
                                 </a>
                                 <ul class="dropdown-menu animated fadeInUp">
                                     <li><a href="/users/profile">Профиль</a></li>
-                                    <li><a href="#">Выход</a></li>
+                                    <li><a href="/user/logout">Выход</a></li>
                                 </ul>
                             </li>
                         </ul>
