@@ -8,3 +8,27 @@
     width: 30px;
     height: 30px;
 }
+
+ul.pagination li span{
+    color: #c34c21;
+}
+
+ul.pagination a{
+    color: #c34c21;
+}
+
+.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+    border-color: #c34c21;
+    background-color: #c34c21;
+}
+
+.search .btn-primary {
+    background-color: #c34c21;
+    border-color: #c34c21;
+}
+
+#addComment {
+    background-color: #c34c21;
+    border-color: #c34c21;
+    margin-top: 20px;
+}

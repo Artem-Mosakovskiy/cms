@@ -43,7 +43,7 @@ function sendImg ($obj) {
         contentType: false,
         success: function(response){
 
-            tinymce.activeEditor.execCommand('mceInsertContent', false, '<img id="img" style="width: 200px;" src="' + response + '">');
+            tinymce.activeEditor.execCommand('mceInsertContent', false, '<img id="img" style="width: 200px;" src="' + response + '" data-mce-src="' + response + '">');
 
             var $image = tinymce.activeEditor.dom.select('[src="' + response + '"]');
             images.push($($image).attr('src'));

@@ -50,7 +50,7 @@ class PostsController extends Controller
         $post = new Posts;
 
         if($post->validate($request->all())){
-
+            
             $post = $post->create($request->all());
             if(User::hasRole(1)){
                 $post->active = 1;
@@ -115,7 +115,7 @@ class PostsController extends Controller
 
                 $file->move('uploads/images/', $fileName);
 
-                echo $request->root() . '/uploads/images/' . $fileName;
+                echo '/uploads/images/' . $fileName;
             }
         }
         exit;

@@ -17,7 +17,7 @@ class CommentsController extends Controller
         return response()->json([
             'status' => 'success',
             'comment' => $comment,
-            'name' => Auth::user()->name
+            'user' => Auth::user()
         ]);
     }
 }

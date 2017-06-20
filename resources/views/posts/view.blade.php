@@ -1,18 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="single-page-artical">
+        <div class="artical-content">
+            <h3>{{ $post->title }}</h3>
+            {!! $post->content !!}
+
+        </div>
+        <div class="artical-links">
+            <ul>
+                <li><small> </small><span>{{ $post->created_at }}</span></li>
+                <li><a href="#"><small class="admin"> </small><span>{{ $post->user->name }}</span></a></li>
+                <li><a href="#"><small class="no"> </small><span>{{ count($post->comments) }} комментариев</span></a></li>
+            </ul>
+        </div>
+        @if (!Auth::guest())
+            @include('comments', [
+            'comments' => $post->comments,
+            'post' => $post
+            ])
+        @endif
+    </div>
+@endsection
+
+@section('content')
 
     <h1 class="page-header text-center">
         {{ $post->title }}
-        {{--<small>статьи</small>--}}
     </h1>
 
     <a class="btn btn-primary" href="{{ \Illuminate\Support\Facades\URL::previous() }}">
         <span class="glyphicon glyphicon-chevron-left"></span>
         Назад
     </a>
-
-    <!-- Blog Post -->
 
     <h2>
         <a href="/posts/view/{{$post->id}}">{{ $post->title }}</a>
@@ -35,15 +55,5 @@
         'post' => $post
         ])
     @endif
-
-    {{--<!-- Pager -->
-    <ul class="pager">
-        <li class="previous">
-            <a href="#">&larr; Назад</a>
-        </li>
-        <li class="next">
-            <a href="#">Вперед &rarr;</a>
-        </li>
-    </ul>--}}
 
 @endsection

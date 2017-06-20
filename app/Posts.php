@@ -19,7 +19,7 @@ class Posts extends AppModel
     ];
 
     public function comments(){
-        return $this->hasMany('App\Comments', 'post_id', 'id')->orderBy('created_at', 'desc');
+        return $this->hasMany('App\Comments', 'post_id', 'id')->orderBy('created_at', 'desc')->with('user');
     }
 
     public function user(){
@@ -28,9 +28,5 @@ class Posts extends AppModel
 
     public function category(){
         return $this->belongsTo('App\Categories', 'category_id', 'id');
-    }
-
-    public function  scopeLike($query, $field, $value){
-        return $query->where($field, 'LIKE', "%$value%");
     }
 }

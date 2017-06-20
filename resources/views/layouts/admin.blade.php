@@ -44,13 +44,13 @@
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ \Illuminate\Support\Facades\Auth::user()->photo ? '/uploads/users/avatar/'.\Illuminate\Support\Facades\Auth::user()->photo : '/images/profile.png' }}" class="img-circle profile-img-small" alt="profileImg">
+                                    <img src="{{ Auth::user()->photo ? '/uploads/users/avatar/'.Auth::user()->photo : '/images/profile.png' }}" class="img-circle profile-img-small" alt="profileImg">
                                     {{ Auth::user()->name }}
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu animated fadeInUp">
-                                    <li><a href="/users/profile">Profile</a></li>
-                                    <li><a href="#">Logout</a></li>
+                                    <li><a href="/users/profile">Профиль</a></li>
+                                    <li><a href="#">Выход</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -67,20 +67,26 @@
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li{{-- class="current"--}}><a href="index.html"><i class="glyphicon glyphicon-home"></i> Главная</a></li>
-                    <li>
+                    <li><a href="/"><i class="glyphicon glyphicon-home"></i> Блог</a></li>
+                    <li class="{{ Menu::active('users') }}">
                         <a href="/admin/users">
                             <i class="glyphicon glyphicon-user"></i>
                             Пользователи
                         </a>
+                    </li>
+                    <li class="{{ Menu::active('categ') }}">
                         <a href="/admin/categories">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             Категории
                         </a>
+                    </li>
+                    <li class="{{ Menu::active('post') }}">
                         <a href="/admin/posts">
                             <i class="glyphicon glyphicon-edit"></i>
                             Статьи
                         </a>
+                    </li>
+                    <li class="{{ Menu::active('comment') }}">
                         <a href="/admin/comments">
                             <i class="glyphicon glyphicon-comment"></i>
                             Комментарии

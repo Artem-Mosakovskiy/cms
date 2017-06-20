@@ -30,6 +30,8 @@ Route::get('admin/deleteCategory/{id}', 'Admin\CategoriesController@delete');
 Route::post('admin/addCategory', 'Admin\CategoriesController@save');
 Route::post('admin/editCategory', 'Admin\CategoriesController@update');
 
+
+Route::get('/admin', 'Admin\PostsController@index');
 /* posts CRUD */
 Route::get('admin/posts', 'Admin\PostsController@index');
 Route::get('admin/search', 'Admin\PostsController@search');
@@ -66,4 +68,7 @@ Route::get('/users/profile', 'UserController@profile');
 Route::post('/user/password', 'UserController@updatePassword');
 Route::post('/users/update', 'UserController@update');
 Route::post('/uploadUserPhoto', 'UserController@uploadPhoto');
+
+
+
 
