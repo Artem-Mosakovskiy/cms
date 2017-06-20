@@ -39,6 +39,18 @@ $(function () {
         });
     });
 
+    $('#subscribe').on('click',function () {
+        $('#subscribeModal').modal('show');
+        $('#subscribeModal input[name=email]').val($('.newsletter input[type=email]').val());
+    });
+    
+    $('form[name=subscribe]').on('submit', function (e) {
+        e.preventDefault();
+        $.post('/subscribe', $('form[name=subscribe]').serialize(), function (response) {
+            $('.modal-content').html($('<h3>').text(response).css('margin', '70px').addClass('text-center'));
+        });
+    });
+
 });
 
 function wrapArray(arr, t, tag, all) {

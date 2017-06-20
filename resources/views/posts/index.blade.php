@@ -84,13 +84,15 @@
                     </script>
                 </div>
             </div>
-            <div class="newsletter">
-                <h3>Оформить подписку</h3>
-                <form>
-                    <input type="text" class="form-control" placeholder="Email" required="">
-                    <input type="submit" class="btn btn-warning" value="Подписаться">
-                </form>
-            </div>
+            @if(!Cookie::get('subscribe'))
+                <div class="newsletter">
+                    <h3>Оформить подписку</h3>
+                    <form>
+                        <input type="email" class="form-control" placeholder="Email" required="">
+                        <input type="submit" id="subscribe" class="btn btn-warning" value="Подписаться">
+                    </form>
+                </div>
+            @endif
 
         </div>
         <div class="clearfix"> </div>

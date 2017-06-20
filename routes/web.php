@@ -69,6 +69,8 @@ Route::post('/user/password', 'UserController@updatePassword');
 Route::post('/users/update', 'UserController@update');
 Route::post('/uploadUserPhoto', 'UserController@uploadPhoto');
 
+Route::post('/subscribe', 'EmailSubscriberController@subscribe');
+
 
 
 
