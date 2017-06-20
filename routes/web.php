@@ -79,5 +79,13 @@ Route::get('/admin/deleteSubscriber/{id}', 'Admin\EmailSubscriberController@dele
 Route::get('/admin/sendToSubscribers', 'Admin\EmailSubscriberController@mailIndex');
 Route::post('/admin/sendMail', 'Admin\EmailSubscriberController@sendMail');
 
+/* pages */
+Route::get('admin/pages', 'Admin\PagesController@index');
+Route::get('admin/addPage', 'Admin\PagesController@add');
+Route::get('admin/editPage/{id}', 'Admin\PagesController@edit');
+Route::get('admin/deletePage/{id}', 'Admin\PagesController@delete');
 
+Route::post('admin/addPage', 'Admin\PagesController@save');
+Route::post('admin/editPage', 'Admin\PagesController@update');
 
+Route::get('/pages/{slug}', 'PagesController@index');

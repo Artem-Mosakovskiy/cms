@@ -100,6 +100,12 @@
                                 Подписчики
                             </a>
                         </li>
+                        <li class="{{ Menu::active('page') }}">
+                            <a href="/admin/pages   ">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Страницы
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div>

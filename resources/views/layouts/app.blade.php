@@ -178,6 +178,9 @@
                     <div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li class="hvr-bounce-to-bottom active"><a href="/">Главная</a></li>
+                            @foreach(\App\Pages::getPages() as $page)
+                                <li class="hvr-bounce-to-bottom"><a href="/pages/{{ $page->slug }}">{{ $page->title }}</a></li>
+                            @endforeach
                         </ul>
 
                         <div class="sign-in">
