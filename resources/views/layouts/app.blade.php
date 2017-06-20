@@ -189,7 +189,7 @@
                                     <li><a href="/login">Вход </a>/</li>
                                     <li><a href="/register">Регистрация</a></li>
                                     @else
-                                    <li><a href="/admin">{{ Auth::user()->name }}</a></li>
+                                    <li><a target="_blank" href="/admin">{{ Auth::user()->name }}</a></li>
                                 @endif
 
                             </ul>

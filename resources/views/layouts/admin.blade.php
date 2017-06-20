@@ -67,7 +67,7 @@
             <div class="sidebar content-box" style="display: block;">
                 <ul class="nav">
                     <!-- Main menu -->
-                    <li><a href="/"><i class="glyphicon glyphicon-home"></i> Блог</a></li>
+                    <li><a target="_blank" href="/"><i class="glyphicon glyphicon-home"></i> Блог</a></li>
                     <li class="{{ Menu::active('categ') }}">
                         <a href="/admin/categories">
                             <i class="glyphicon glyphicon-list-alt"></i>
@@ -96,13 +96,13 @@
                         </li>
                         <li class="{{ Menu::active('subscribers') }}">
                             <a href="/admin/subscribers">
-                                <i class="glyphicon glyphicon-user"></i>
+                                <i class="glyphicon glyphicon-envelope"></i>
                                 Подписчики
                             </a>
                         </li>
                         <li class="{{ Menu::active('page') }}">
                             <a href="/admin/pages   ">
-                                <i class="glyphicon glyphicon-edit"></i>
+                                <i class="glyphicon glyphicon-file"></i>
                                 Страницы
                             </a>
                         </li>
