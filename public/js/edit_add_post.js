@@ -86,7 +86,7 @@ $(function () {
         $('textarea[name=content]').val(tinymce.activeEditor.getContent());
         var $tiny = tinyMCE.activeEditor.getBody();
         var $images = $($tiny).find('img#img');
-        deleteUnusedImages($images);
+        //deleteUnusedImages($images);
     });
 
     $('input[name=img]').on('change', function () {

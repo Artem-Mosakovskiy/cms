@@ -7,6 +7,7 @@ use App\Comments;
 use App\Http\Controllers\Controller;
 use App\Posts;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class PostsController extends Controller
     public function index()
     {
         $active = 1;
-        if(Input::get('moderate') == true){
+        if(Input::get('moderate') == true && Auth::user()->hasRole(1)){
             $active = 0;
         }
         $posts  = Posts::with('user','category')->where('active', $active)->get();

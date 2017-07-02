@@ -9,7 +9,7 @@
             <div class="panel-options">
                 @if(Input::get('moderate') and \App\User::hasRole(1))
                     <a href="?" class="btn btn-primary">Активные</a>
-                    @else
+                    @elseif(\App\User::hasRole(1))
                         <a href="?moderate=true" class="btn btn-primary">Модерация</a>
                 @endif
                 <a href="/admin/addPost" class="btn btn-success">Добавить статью</a>
